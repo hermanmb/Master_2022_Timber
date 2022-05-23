@@ -12,7 +12,7 @@ Department of Structural Engineering.
 
 
 Packages used:
-pandas, sklearn, numpy, cipy, matplotlib
+pandas, sklearn, numpy, matplotlib and opensees
 
 -----------
 Instructions: 
