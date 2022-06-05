@@ -3,8 +3,8 @@ class StandardElement(object):
         # Material properties (N/mm2)
         self._E_GL30c = 13000
         self._G_GL30c = 650
-        self._E_CLT = 9169
-        self._G_CLT = 585
+        self._E_CLT = 11000
+        self._G_CLT = 690
 
         # Beams (mm)
         self._bb = 430.
