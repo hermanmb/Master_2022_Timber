@@ -5,7 +5,7 @@ from math import asin, sqrt, sin, cos, atan
 
 class OutRiggerSystem(object):
 
-    def __init__(self, model, complete=False, ULS=False, reduction=False):
+    def __init__(self, model, complete=False, ULS=False, reduction=True):
         self._numFloor = model.getNumFloor()
         self._numBay = model.getNumBays()
         self._L_bay = model.getL_bay()
