@@ -24,7 +24,7 @@ class StandardElement(object):
 
         # Rotational stiffness
         # Beams (mm)
-        self._Krb = 25920 #round((self._hb / 450) ** 2 * 4500,0)  # kN.m/rad
+        self._Krb = round((self._hb / 450) ** 2 * 4500,0) *4 # kN.m/rad
 
         # Columns (mm)
         self._Krc = 10000  # kN.m/rad
