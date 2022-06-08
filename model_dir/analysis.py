@@ -23,7 +23,7 @@ class Analysis(object):
         self._Ke = self.getElasticStiffnessMatrix()
         self._spacing = model._spacing
         self._model = model
-        self._ULT = model._loads.getULT()
+        self._ULS = model._loads.getULS()
         self._Char = model._loads.getCharacteristic()
         self._Quasi = model._loads.getQuasi()
         self._L_bay = model.getL_bay()
@@ -213,8 +213,8 @@ class Analysis(object):
         # Remove all load patterns and analysis results
         ops.wipeAnalysis()
 
-        # Apply ULT load
-        self.setULT_DeadAndLiveLoad()
+        # Apply ULS load
+        self.setULS_DeadAndLiveLoad()
 
         # The Convergance parameters
         ops.system("FullGeneral")
@@ -264,7 +264,7 @@ class Analysis(object):
         # Remove all load patterns and analysis results
         ops.wipeAnalysis()
 
-        # Apply ULT load
+        # Apply ULS load
         self.setQuasiLoad()
 
         N_steps = 10  # When applying the loads, apply it in several steps
@@ -296,7 +296,7 @@ class Analysis(object):
         return mass
 
 
-    def getLaterDisplacements(self,wind,deadAndLive, ULT = False, plot=True):
+    def getLaterDisplacements(self,wind,deadAndLive, ULS = False, plot=True):
         # Remove all load patterns and analysis results
         ops.wipeAnalysis()
 
@@ -304,14 +304,14 @@ class Analysis(object):
             return print("ERROR, you need to set loads")
 
         # Apply char dead and live loads (nodal vertical forces and bending moments)
-        if (ULT):
+        if (ULS):
             # Apply lateral wind load
             if (wind):
                 self.setWindLoad()
 
-            # Apply lateral ULT load
+            # Apply lateral ULS load
             if (deadAndLive):
-                self.setULT_DeadAndLiveLoad()
+                self.setULS_DeadAndLiveLoad()
         else:
             # Apply lateral wind load
             if (wind):
@@ -519,13 +519,13 @@ class Analysis(object):
 
 
 
-    def setULT_DeadAndLiveLoad(self):
+    def setULS_DeadAndLiveLoad(self):
         ops.pattern("Plain", 1, 1)
 
         S = self._spacing
-        ULT = self._ULT
+        ULS = self._ULS
         if (self._uniform):
-            ult = S*ULT/(-1000)
+            ult = S*ULS/(-1000)
             for etag in self._beams:
                 ops.eleLoad('-ele', etag, '-type', '-beamUniform', ult, 0.)
 
@@ -547,8 +547,8 @@ class Analysis(object):
 
         else:
             # Apply ultimate loads (gravity)
-            Py = (ULT / 1000) * S * self._L_bay  # ULT point load (dead and live loads)
-            Mz = ((ULT / 1000) * S) * self._L_bay ** 2 / 12  # Moment due to dead and live load
+            Py = (ULS / 1000) * S * self._L_bay  # ULS point load (dead and live loads)
+            Mz = ((ULS / 1000) * S) * self._L_bay ** 2 / 12  # Moment due to dead and live load
 
             for j in range(1, self._numFloor + 1):
                 for i in range(1, self._numBay + 1):
