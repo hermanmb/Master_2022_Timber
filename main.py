@@ -74,7 +74,7 @@ analysis = Analysis(model, otrs, uniform=True, complete=True)
 
 buildingMass = model._Mass*(numFrames-1)*numFloor*1000
 
-analysis.getLaterDisplacements(wind=True, deadAndLive=True, ULT=True, plot=True)
+analysis.getLaterDisplacements(wind=True, deadAndLive=True, ULS=False, plot=False)
 
 forceElements = analysis.getforceElements()
 
