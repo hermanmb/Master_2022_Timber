@@ -5,7 +5,7 @@ from math import asin, sqrt, sin, cos, atan
 
 class OutRiggerSystem(object):
 
-    def __init__(self, model, complete=False, ult=False, reduction=False):
+    def __init__(self, model, complete=False, ULS=False, reduction=False):
         self._numFloor = model.getNumFloor()
         self._numBay = model.getNumBays()
         self._L_bay = model.getL_bay()
@@ -17,7 +17,7 @@ class OutRiggerSystem(object):
         self._zerolinkElementTag = model._zerolinkElementTag
         self._outrigger = model._outrigger
         self._complete = complete
-        self._ult = ult
+        self._ULS = ULS
         self._reduction = reduction
 
         self._angle = atan(self._floor_h / self._L_bay)
@@ -44,12 +44,12 @@ class OutRiggerSystem(object):
         Equv_stiffness_SLS = (1 / self._Kaxd + 1 / Diagonal_stiffness + 1 / self._Kaxd) ** -1
         self._Reduction_diagonal_SLS = Equv_stiffness_SLS / Diagonal_stiffness
 
-        Equv_stiffness_ULT = (1 / ((2 / 3) * self._Kaxd) + 1 / Diagonal_stiffness + 1 / ((2 / 3) * self._Kaxd)) ** -1
-        self._Reduction_diagonal_ULT = Equv_stiffness_ULT / Diagonal_stiffness
+        Equv_stiffness_ULS = (1 / ((2 / 3) * self._Kaxd) + 1 / Diagonal_stiffness + 1 / ((2 / 3) * self._Kaxd)) ** -1
+        self._Reduction_diagonal_ULS = Equv_stiffness_ULS / Diagonal_stiffness
 
-        if (self._ult):
+        if (self._ULS):
             if (self._reduction):
-                self._reductionFactor = self._Reduction_diagonal_ULT
+                self._reductionFactor = self._Reduction_diagonal_ULS
             else:
                 self._reductionFactor = 1
         else:
