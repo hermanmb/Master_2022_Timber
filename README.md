@@ -16,3 +16,7 @@ pandas, sklearn, numpy, matplotlib and opensees
 
 -----------
 Instructions: 
+
+To run the main file, you need to download all the files and place them in equivalent folders as the ones provided on github. 
+
+A more throughout despriction of how every function works is provided in section 4.4 implementation
