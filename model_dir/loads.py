@@ -7,7 +7,7 @@ class Loads(object):
 
         self._Quasi = self._Dead_load + 0.3 * self._Live_load
         self._Characteristic = self._Dead_load + 0.7 * self._Live_load
-        self._ULT = 1.2 * self._Dead_load + 1.5 * self._Live_load
+        self._ULS = 1.2 * self._Dead_load + 1.5 * self._Live_load
 
         self._Lateral_load = 0
         self._Px = 0.
@@ -39,9 +39,9 @@ class Loads(object):
         if (self._Characteristic== 0): print("Characteristic Load = 0")
         return self._Characteristic
 
-    def getULT(self):
-        if (self._ULT == 0): print("ULT Load = 0")
-        return self._ULT
+    def getULS(self):
+        if (self._ULS == 0): print("ULS Load = 0")
+        return self._ULS
 
     def getPx(self):
         if (self._Px == 0): print("Px = 0")
