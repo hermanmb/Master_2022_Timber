@@ -12,11 +12,11 @@ Department of Structural Engineering.
 
 
 Packages used:
-pandas, sklearn, numpy, matplotlib and opensees
+pandas, scipy, math, numpy, matplotlib and openseesPy
 
 -----------
 Instructions: 
 
 To run the main file, you need to download all the files and place them in equivalent folders as the ones provided on github. 
 
-A more throughout despriction of how every function works is provided in section 4.4 implementation
+A more throughout despriction of how every function works is provided in Section 4.4, Implementation
